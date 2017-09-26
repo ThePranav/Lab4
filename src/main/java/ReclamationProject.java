@@ -8,19 +8,31 @@
  * 5. Remove unnecessary comments as appropriate
  */
 
-public class ReclamationProject
-{
-    static String doit(String a,String b){
-        if (a.length() > b.length()){
-            String c = a; // TODO: set c to a
-            a=b; b=c;}
-        String r = (a.equals(b)) ? "" : ""; // I love the ternary operator!
-        /*
-         * For loop with i
-         */
-        for (int i = 0; i < a.length(); i++) { for (int j = a.length() - i; j > 0; j--) {
-                for (int k = 0; k < b.length()- j; k++) {
-                    r = (a.regionMatches(i, b, k, j) && j >r.length()) ? a.substring(i,i + j) : r; // Do it!
-                        }} // Ah yeah
+/**
+ * Reclamation Project contains method to find longest common substring between two strings.
+ */
+public class ReclamationProject {
+    /**
+     *
+     * @param a first String input to find longest common substring
+     * @param b first String input to find longest common substring
+     * @return returns longest common substring between a and b
+     */
+    static String longestCommonSubstring(final String a, final String b) {
+        String longerString = a;
+        String shorterString = b;
+        if (longerString.length() < shorterString.length()) {
+            longerString = b;
+            shorterString = a;
+        }
+        String r  = "";
+        for (int i = 0; i < longerString.length(); i++) {
+            for (int j = longerString.length() - i; j > 0; j--) {
+                for (int k = 0; k < shorterString.length() - j; k++) {
+                    if (longerString.regionMatches(i, shorterString, k, j) && j > r.length()) {
+                        r = longerString.substring(i, i + j);
+                    }
+                }
+            }
         } return r; }
 }
