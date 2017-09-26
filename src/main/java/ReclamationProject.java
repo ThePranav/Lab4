@@ -14,8 +14,8 @@
 public class ReclamationProject {
     /**
      *
-     * @param a first String input to find longest common substring
-     * @param b first String input to find longest common substring
+     * @param a first String input
+     * @param b second String input
      * @return returns longest common substring between a and b
      */
     static String longestCommonSubstring(final String a, final String b) {
