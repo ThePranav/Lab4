@@ -19,18 +19,20 @@ public class ReclamationProject {
      * @return returns longest common substring between a and b
      */
     static String longestCommonSubstring(final String a, final String b) {
-        String longerString = a;
-        String shorterString = b;
-        if (longerString.length() < shorterString.length()) {
-            longerString = b;
-            shorterString = a;
+        String longStr = a;
+        String shortStr = b;
+        if (longStr.length() < shortStr.length()) {
+            longStr = b;
+            shortStr = a;
         }
         String r  = "";
-        for (int i = 0; i < longerString.length(); i++) {
-            for (int j = longerString.length() - i; j > 0; j--) {
-                for (int k = 0; k < shorterString.length() - j; k++) {
-                    if (longerString.regionMatches(i, shorterString, k, j) && j > r.length()) {
-                        r = longerString.substring(i, i + j);
+        for (int longStrStart = 0; longStrStart < longStr.length(); longStrStart++) {
+            for (int longStrEnd = longStr.length() - longStrStart; longStrEnd > 0; longStrEnd--) {
+                for (int shortStrStart = 0; shortStrStart < shortStr.length() - longStrEnd;
+                        shortStrStart++) {
+                    if (longStr.regionMatches(longStrStart, shortStr, shortStrStart, longStrEnd)
+                            && longStrEnd > r.length()) {
+                        r = longStr.substring(longStrStart, longStrStart + longStrEnd);
                     }
                 }
             }
